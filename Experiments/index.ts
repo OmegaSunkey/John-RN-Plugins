@@ -35,8 +35,9 @@ export default class Experiments extends Plugin {
     } 
     
     public async start() {
+    	this.sleep(10000)
         if (UserStore.getCurrentUser()) {
-        	this.sleep(20000)
+        	//this.sleep(20000)
             this.enableExperiments()
             } else {
         	this.sleep(10000)
