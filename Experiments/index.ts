@@ -15,7 +15,7 @@ export default class Experiments extends Plugin {
     public handleConnect() {
 	try {
                 const handleThis = () => {
-                    FluxDispatcher.unsubscribe("CONNECTION_OPEN", handleConnect);
+                    FluxDispatcher.unsubscribe("CONNECTION_OPEN", handleThis);
                     this.enableExperiments()
                 }
 
