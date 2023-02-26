@@ -36,10 +36,10 @@ export default class Experiments extends Plugin {
     
     public async start() {
         if (UserStore.getCurrentUser()) {
-        	this.sleep(5000)
+        	this.sleep(10000)
             this.enableExperiments()
             } else {
-        	this.sleep(5000)
+        	this.sleep(10000)
             this.handleConnect()
         }
     }
