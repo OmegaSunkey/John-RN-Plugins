@@ -12,7 +12,7 @@ export default class Experiments extends Plugin {
         user.flags &= ~1;
     }
     
-    function sleep(milliseconds) {
+    public sleep(milliseconds) {
   	var start = new Date().getTime();
   	for (var i = 0; i < 1e7; i++) {
     	if ((new Date().getTime() - start) > milliseconds){
