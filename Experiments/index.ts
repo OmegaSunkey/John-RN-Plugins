@@ -12,20 +12,24 @@ export default class Experiments extends Plugin {
         user.flags &= ~1;
     }
     
-    public async start() {
-        if (UserStore.getCurrentUser())
-            this.enableExperiments()
-        else {
-            try {
-                const handleConnect = () => {
+    public handleConnect() {
+	try {
+                const handleThis = () => {
                     FluxDispatcher.unsubscribe("CONNECTION_OPEN", handleConnect);
                     this.enableExperiments()
                 }
 
-                FluxDispatcher.subscribe("CONNECTION_OPEN", handleConnect);
+                FluxDispatcher.subscribe("CONNECTION_OPEN", handleThis);
             } catch (error) {
                 this.logger.error((error as Error).stack)
             }
+    } 
+    
+    public async start() {
+        if (UserStore.getCurrentUser())
+            setTimeout(this.enableExperiments(), 5000)
+        else {
+            setTimeout(this.handleConnect(), 5000)
         }
     }
 }
